@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // This is the correct way to set up SonarQube analysis
                 withSonarQubeEnv('sonarqube') {  // Replace 'SonarQube' with the actual name of your SonarQube server in Jenkins config
-                    withCredentials([string(credentialsId: 'sonar_token', usernameVariable: 'SONAR_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'sonar_token', variable: 'SONAR_TOKEN')]) {
                         sh """
                             /opt/maven/bin/mvn sonar:sonar \
                             -Dsonar.projectKey=my-project \
