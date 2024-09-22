@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         SONAR_HOST_URL = 'http://35.197.67.57:9000'  // SonarQube server URL
+        SONAR_GLB_TOKEN = credentials('sonar_token')
     }
    
     stages {
@@ -25,7 +26,7 @@ pipeline {
             steps {
                 // This is the correct way to set up SonarQube analysis
                 withSonarQubeEnv('sonarqube') {  // Replace 'SonarQube' with the actual name of your SonarQube server in Jenkins config
-                    withCredentials([string(credentialsId: 'sonar_token', variable: 'SONAR_TOKEN')]) {
+                    // withCredentials([string(credentialsId: 'sonar_token', variable: 'SONAR_TOKEN')]) {
                         sh """
                             /opt/maven/bin/mvn sonar:sonar \
                             -Dsonar.projectKey=my-project \
@@ -33,7 +34,7 @@ pipeline {
                             -Dsonar.login=${SONAR_TOKEN}
                             
                         """
-                    }
+                    // }
                 }
             }
         }
