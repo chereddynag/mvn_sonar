@@ -31,7 +31,7 @@ pipeline {
                             /opt/maven/bin/mvn sonar:sonar \
                             -Dsonar.projectKey=my-project \
                             -Dsonar.host.url=${SONAR_HOST_URL} \
-                            -Dsonar.login=${SONAR_TOKEN}
+                            -Dsonar.login=${SONAR_GLB_TOKEN}
                             
                         """
                     // }
