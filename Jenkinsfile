@@ -14,12 +14,12 @@ pipeline {
             }
         }
 
-        // stage('Build') {
-        //     steps {
-        //         // Run the Maven build (or another build tool you're using)
-        //         sh '/opt/maven/bin/mvn clean install'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                // Run the Maven build (or another build tool you're using)
+                sh '/opt/maven/bin/mvn clean install'
+            }
+        }
 
         stage('SonarQube Analysis') {
             steps {
